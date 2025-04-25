@@ -26,68 +26,36 @@ int main() {
 
     printf("\nRAPIDO\n\n");
     
+    for(int i = 1; i < 4; i++){
+        tempo = timestamp();
+        bisseccao(pol, a, b, i, &it, &raiz, &calcPolinomio_rapido);
+        tempo = timestamp() - tempo;
+        printf("bissec %.15e valor_crit-0%i %i %.8e\n", raiz, i, it, tempo);
+    }
 
-    tempo = timestamp();
-    bisseccao(pol, a, b, 1, &it, &raiz, &calcPolinomio_rapido);
-    tempo = timestamp() - tempo;
-    printf("bissec %.15e valor_crit-01 %i %.8e\n", raiz, it, tempo);
+    for(int i = 1; i < 4; i++){
+        tempo = timestamp();
+        newtonRaphson(pol, x0, i, &it, &raiz, &calcPolinomio_rapido);
+        tempo = timestamp() - tempo;
+        printf("newton %.15e valor_crit-0%i %i %.8e\n", raiz, i, it, tempo);
+    }
 
-    tempo = timestamp();
-    bisseccao(pol, a, b, 2, &it, &raiz, &calcPolinomio_rapido);
-    tempo = timestamp() - tempo;
-    printf("bissec %.15e valor_crit-02 %i %.8e\n", raiz, it, tempo);
-
-    tempo = timestamp();
-    bisseccao(pol, a, b, 3, &it, &raiz, &calcPolinomio_rapido);
-    tempo = timestamp() - tempo;
-    printf("bissec %.15e valor_crit-03 %i %.8e\n", raiz, it, tempo);
-
-    tempo = timestamp();
-    newtonRaphson(pol, x0, 1, &it, &raiz, &calcPolinomio_rapido);
-    tempo = timestamp() - tempo;
-    printf("newton %.15e valor_crit-01 %i %.8e\n", raiz, it, tempo);
-
-    tempo = timestamp();
-    newtonRaphson(pol, x0, 2, &it, &raiz, &calcPolinomio_rapido);
-    tempo = timestamp() - tempo;
-    printf("newton %.15e valor_crit-02 %i %.8e\n", raiz, it, tempo);
-
-    tempo = timestamp();
-    newtonRaphson(pol, x0, 3, &it, &raiz, &calcPolinomio_rapido);
-    tempo = timestamp() - tempo;
-    printf("newton %.15e valor_crit-03 %i %.8e\n", raiz, it, tempo);
     
     printf("\nLENTO\n\n");
 
-    tempo = timestamp();
-    bisseccao(pol, a, b, 1, &it, &raiz, &calcPolinomio_lento);
-    tempo = timestamp() - tempo;
-    printf("bissec %.15e valor_crit-01 %i %.8e\n", raiz, it, tempo);
+    for(int i = 1; i < 4; i++){
+        tempo = timestamp();
+        bisseccao(pol, a, b, i, &it, &raiz, &calcPolinomio_lento);
+        tempo = timestamp() - tempo;
+        printf("bissec %.15e valor_crit-0%i %i %.8e\n", raiz, i, it, tempo);
+    }
 
-    tempo = timestamp();
-    bisseccao(pol, a, b, 2, &it, &raiz, &calcPolinomio_lento);
-    tempo = timestamp() - tempo;
-    printf("bissec %.15e valor_crit-02 %i %.8e\n", raiz, it, tempo);
-
-    tempo = timestamp();
-    bisseccao(pol, a, b, 3, &it, &raiz, &calcPolinomio_lento);
-    tempo = timestamp() - tempo;
-    printf("bissec %.15e valor_crit-03 %i %.8e\n", raiz, it, tempo);
-
-    tempo = timestamp();
-    newtonRaphson(pol, x0, 1, &it, &raiz, &calcPolinomio_lento);
-    tempo = timestamp() - tempo;
-    printf("newton %.15e valor_crit-01 %i %.8e\n", raiz, it, tempo);
-
-    tempo = timestamp();
-    newtonRaphson(pol, x0, 2, &it, &raiz, &calcPolinomio_lento);
-    tempo = timestamp() - tempo;
-    printf("newton %.15e valor_crit-02 %i %.8e\n", raiz, it, tempo);
-
-    tempo = timestamp();
-    newtonRaphson(pol, x0, 3, &it, &raiz, &calcPolinomio_lento);
-    tempo = timestamp() - tempo;
-    printf("newton %.15e valor_crit-03 %i %.8e\n", raiz, it, tempo);
+    for(int i = 1; i < 4; i++){
+        tempo = timestamp();
+        newtonRaphson(pol, x0, i, &it, &raiz, &calcPolinomio_lento);
+        tempo = timestamp() - tempo;
+        printf("newton %.15e valor_crit-0%i %i %.8e\n", raiz, i, it, tempo);
+    }
 
     free(pol.p);
 
